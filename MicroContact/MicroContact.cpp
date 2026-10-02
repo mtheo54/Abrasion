@@ -9,7 +9,7 @@
 #endif
 
 MicroContact::MicroContact(const InstanceInfo& info)
-: Plugin(info, MakeConfig(kNumParams, kNumPresets))
+: iplug::Plugin(info, MakeConfig(kNumParams, kNumPresets))
 {
   // Les défauts sont ceux du premier cas d'usage (808 & Sub) : une seule source de vérité.
   const mc::Params& d = mc::UseCases()[0].p;

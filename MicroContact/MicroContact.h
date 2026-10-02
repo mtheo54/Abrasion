@@ -19,7 +19,7 @@ constexpr int kTelemetryChannels = 12;
 
 using namespace iplug;
 
-class MicroContact final : public Plugin
+class MicroContact final : public iplug::Plugin
 {
 public:
   MicroContact(const InstanceInfo& info);
