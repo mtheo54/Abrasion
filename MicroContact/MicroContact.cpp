@@ -77,9 +77,18 @@ MicroContact::MicroContact(const InstanceInfo& info)
     pGraphics->AttachPanelBackground(Bg);
     pGraphics->EnableMouseOver(true);
     pGraphics->EnableMultiTouch(true);
+    bool fontLoaded = false;
 #ifdef ROBOTO_FN
-    pGraphics->LoadFont("Roboto-Regular", ROBOTO_FN);
+    fontLoaded = pGraphics->LoadFont("Roboto-Regular", ROBOTO_FN);
 #endif
+    if (!fontLoaded)
+    {
+#if defined(OS_WIN)
+      pGraphics->LoadFont("Roboto-Regular", "Segoe UI", ETextStyle::Normal);
+#elif defined(OS_MAC)
+      pGraphics->LoadFont("Roboto-Regular", "Helvetica Neue", ETextStyle::Normal);
+#endif
+    }
 
     const IVStyle orange = MakeStyle(Orange);
     const IVStyle cyan = MakeStyle(Cyan);
